@@ -10,7 +10,6 @@ const spotifyAuthUrl = `https://accounts.spotify.com/authorize?client_id=${clien
 
 
 router.get('/', (req, res) => {
-  // Handle the Spotify login logic
   res.json({"Spotify Login" : spotifyAuthUrl});
 });
 
