@@ -25,7 +25,8 @@ router.get('/', (req, res) => {
     (error, response, body) => {
       if (!error && response.statusCode === 200) {
         const data = JSON.parse(body);
-        res.json({'data': data});
+        res.cookie('refresh_token', data?.refresh_token, { httpOnly: true, secure: true, sameSite: 'Strict' });
+        res.json({'access_token': data.access_token});
       } else {
         res.status(500).json({ error: 'Error authenticating with Spotify' });
       }

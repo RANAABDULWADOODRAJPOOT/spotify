@@ -4,12 +4,12 @@ const axios = require('axios');
 
 router.post('/', (req, res) => {
   
-  const refreshToken = req?.body?.refresh_token;
+  const refreshToken = req?.cookies?.refresh_token;
 
   if (!refreshToken) {
     return res.status(400).json({ error: 'refresh_token is required' });
   }
-  
+
   const clientId = process.env.CLIENT_ID;
   const clientSecret = process.env.CLIENT_SECRET;
 
