@@ -5,15 +5,12 @@ const axios = require('axios');
 
 const spotifyRecommendationsUrl = 'https://api.spotify.com/v1/recommendations';
 
-router.get('/', (req, res) => {
-  // Handle Spotify recommendation logic using the access token
+router.post('/', (req, res) => {
 
   const tokenString = req.header('Authorization');
   const token = tokenString.split(' ');
 
-
-
-  const { limit, seed_artists, seed_genres, seed_tracks, target_tempo, sort, order } = req.query;
+  const { limit, seed_artists, seed_genres, seed_tracks, target_tempo, sort, order } = req.body;
 
   if (!seed_artists || !seed_genres || !seed_tracks) {
     return res.status(400).json({ error: 'seed_artists, seed_genres, and seed_tracks are required fields' });
