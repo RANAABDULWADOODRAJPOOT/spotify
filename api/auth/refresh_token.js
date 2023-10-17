@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-router.post('/', (req, res) => {
+router.get('/', (req, res) => {
   
   const refreshToken = req?.cookies?.refresh_token;
 
